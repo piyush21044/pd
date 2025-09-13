@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Analog Watch</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #1a237e, #311b92);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .watch-title {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 32px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+        
+        .clock {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #f5f5f5, #e0e0e0);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 12px solid #3949ab;
+            margin: 0 auto;
+        }
+        
+        .clock::before {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: #e53935;
+            border-radius: 50%;
+            z-index: 10;
+            box-shadow: 0 0 10px rgba(229, 57, 53, 0.5);
+        }
+        
+        .hour, .minute, .second {
+            position: absolute;
+            transform-origin: bottom center;
+            border-radius: 50% 50% 2px 2px;
+            top: 50%;
+            left: 50%;
+        }
+        
+        .hour {
+            width: 8px;
+            height: 80px;
+            background: #3949ab;
+            margin-left: -4px;
+            margin-top: -80px;
+            z-index: 3;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .minute {
+            width: 6px;
+            height: 110px;
+            background: #5c6bc0;
+            margin-left: -3px;
+            margin-top: -110px;
+            z-index: 4;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .second {
+            width: 2px;
+            height: 130px;
+            background: #e53935;
+            margin-left: -1px;
+            margin-top: -130px;
+            z-index: 5;
+            box-shadow: 0 0 5px rgba(229, 57, 53, 0.5);
+        }
+        
+        .numbers {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .number {
+            position: absolute;
+            font-weight: bold;
+            color: #3949ab;
+            font-size: 24px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            transform: translate(-50%, -50%);
+        }
+        
+        /* Hour markers */
+        .hour-marker {
+            position: absolute;
+            width: 4px;
+            height: 20px;
+            background: #3949ab;
+            top: 10px;
+            left: 50%;
+            margin-left: -2px;
+            transform-origin: center 150px;
+        }
+        
+        .minute-marker {
+            position: absolute;
+            width: 2px;
+            height: 12px;
+            background: #9e9e9e;
+            top: 14px;
+            left: 50%;
+            margin-left: -1px;
+            transform-origin: center 146px;
+        }
+        
+        .digital-time {
+            margin-top: 30px;
+            font-size: 28px;
+            color: white;
+            background: rgba(57, 73, 171, 0.7);
+            padding: 12px 25px;
+            border-radius: 10px;
+            display: inline-block;
+            letter-spacing: 2px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .date-display {
+            margin-top: 15px;
+            font-size: 18px;
+            color: white;
+            background: rgba(229, 57, 53, 0.7);
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        
+        .decoration {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3949ab, #e53935);
+            opacity: 0.1;
+            z-index: 0;
+            animation: pulse 15s infinite alternate;
+        }
+        
+        .decoration:nth-child(1) {
+            top: -200px;
+            left: -200px;
+        }
+        
+        .decoration:nth-child(2) {
+            bottom: -150px;
+            right: -150px;
+            width: 300px;
+            height: 300px;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.15;
+            }
+            100% {
+                transform: scale(0.9);
+                opacity: 0.05;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="decoration"></div>
+    <div class="decoration"></div>
+    
+    <div class="container">
+        <h1 class="watch-title">Elegant Analog Watch</h1>
+        <div class="clock">
+            <div class="hour"></div>
+            <div class="minute"></div>
+            <div class="second"></div>
+            
+            <div class="numbers">
+                <div class="number" style="top: 25px; left: 145px;">12</div>
+                <div class="number" style="top: 50px; left: 200px;">1</div>
+                <div class="number" style="top: 105px; left: 235px;">2</div>
+                <div class="number" style="top: 145px; left: 250px;">3</div>
+                <div class="number" style="top: 185px; left: 235px;">4</div>
+                <div class="number" style="top: 240px; left: 200px;">5</div>
+                <div class="number" style="top: 265px; left: 145px;">6</div>
+                <div class="number" style="top: 240px; left: 90px;">7</div>
+                <div class="number" style="top: 185px; left: 55px;">8</div>
+                <div class="number" style="top: 145px; left: 40px;">9</div>
+                <div class="number" style="top: 105px; left: 45px;">10</div>
+                <div class="number" style="top: 50px; left: 80px;">11</div>
+            </div>
+            
+            <!-- Hour markers -->
+            <div class="hour-marker" style="transform: rotate(0deg);"></div>
+            <div class="hour-marker" style="transform: rotate(30deg);"></div>
+            <div class="hour-marker" style="transform: rotate(60deg);"></div>
+            <div class="hour-marker" style="transform: rotate(90deg);"></div>
+            <div class="hour-marker" style="transform: rotate(120deg);"></div>
+            <div class="hour-marker" style="transform: rotate(150deg);"></div>
+            <div class="hour-marker" style="transform: rotate(180deg);"></div>
+            <div class="hour-marker" style="transform: rotate(210deg);"></div>
+            <div class="hour-marker" style="transform: rotate(240deg);"></div>
+            <div class="hour-marker" style="transform: rotate(270deg);"></div>
+            <div class="hour-marker" style="transform: rotate(300deg);"></div>
+            <div class="hour-marker" style="transform: rotate(330deg);"></div>
+            
+            <!-- Minute markers -->
+            <div class="minute-marker" style="transform: rotate(6deg);"></div>
+            <div class="minute-marker" style="transform: rotate(12deg);"></div>
+            <div class="minute-marker" style="transform: rotate(18deg);"></div>
+            <div class="minute-marker" style="transform: rotate(24deg);"></div>
+            <div class="minute-marker" style="transform: rotate(36deg);"></div>
+            <div class="minute-marker" style="transform: rotate(42deg);"></div>
+            <div class="minute-marker" style="transform: rotate(48deg);"></div>
+            <div class="minute-marker" style="transform: rotate(54deg);"></div>
+            <div class="minute-marker" style="transform: rotate(66deg);"></div>
+            <div class="minute-marker" style="transform: rotate(72deg);"></div>
+            <div class="minute-marker" style="transform: rotate(78deg);"></div>
+            <div class="minute-marker" style="transform: rotate(84deg);"></div>
+            <div class="minute-marker" style="transform: rotate(96deg);"></div>
+            <div class="minute-marker" style="transform: rotate(102deg);"></div>
+            <div class="minute-marker" style="transform: rotate(108deg);"></div>
+            <div class="minute-marker" style="transform: rotate(114deg);"></div>
+            <div class="minute-marker" style="transform: rotate(126deg);"></div>
+            <div class="minute-marker" style="transform: rotate(132deg);"></div>
+            <div class="minute-marker" style="transform: rotate(138deg);"></div>
+            <div class="minute-marker" style="transform: rotate(144deg);"></div>
+            <div class="minute-marker" style="transform: rotate(156deg);"></div>
+            <div class="minute-marker" style="transform: rotate(162deg);"></div>
+            <div class="minute-marker" style="transform: rotate(168deg);"></div>
+            <div class="minute-marker" style="transform: rotate(174deg);"></div>
+            <div class="minute-marker" style="transform: rotate(186deg);"></div>
+            <div class="minute-marker" style="transform: rotate(192deg);"></div>
+            <div class="minute-marker" style="transform: rotate(198deg);"></div>
+            <div class="minute-marker" style="transform: rotate(204deg);"></div>
+            <div class="minute-marker" style="transform: rotate(216deg);"></div>
+            <div class="minute-marker" style="transform: rotate(222deg);"></div>
+            <div class="minute-marker" style="transform: rotate(228deg);"></div>
+            <div class="minute-marker" style="transform: rotate(234deg);"></div>
+            <div class="minute-marker" style="transform: rotate(246deg);"></div>
+            <div class="minute-marker" style="transform: rotate(252deg);"></div>
+            <div class="minute-marker" style="transform: rotate(258deg);"></div>
+            <div class="minute-marker" style="transform: rotate(264deg);"></div>
+            <div class="minute-marker" style="transform: rotate(276deg);"></div>
+            <div class="minute-marker" style="transform: rotate(282deg);"></div>
+            <div class="minute-marker" style="transform: rotate(288deg);"></div>
+            <div class="minute-marker" style="transform: rotate(294deg);"></div>
+            <div class="minute-marker" style="transform: rotate(306deg);"></div>
+            <div class="minute-marker" style="transform: rotate(312deg);"></div>
+            <div class="minute-marker" style="transform: rotate(318deg);"></div>
+            <div class="minute-marker" style="transform: rotate(324deg);"></div>
+            <div class="minute-marker" style="transform: rotate(336deg);"></div>
+            <div class="minute-marker" style="transform: rotate(342deg);"></div>
+            <div class="minute-marker" style="transform: rotate(348deg);"></div>
+            <div class="minute-marker" style="transform: rotate(354deg);"></div>
+        </div>
+        
+        <div class="digital-time">00:00:00</div>
+        <div class="date-display">Monday, January 1, 2023</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hourHand = document.querySelector('.hour');
+            const minuteHand = document.querySelector('.minute');
+            const secondHand = document.querySelector('.second');
+            const digitalTime = document.querySelector('.digital-time');
+            const dateDisplay = document.querySelector('.date-display');
+            
+            function updateTime() {
+                const now = new Date();
+                const hours = now.getHours() % 12;
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+                const milliseconds = now.getMilliseconds();
+                
+                // Calculate angles with smooth transitions for seconds and minutes
+                const secondAngle = seconds * 6 + milliseconds * 0.006;
+                const minuteAngle = minutes * 6 + seconds * 0.1;
+                const hourAngle = hours * 30 + minutes * 0.5;
+                
+                // Apply rotations
+                secondHand.style.transform = `rotate(${secondAngle}deg)`;
+                minuteHand.style.transform = `rotate(${minuteAngle}deg)`;
+                hourHand.style.transform = `rotate(${hourAngle}deg)`;
+                
+                // Update digital time
+                const amPm = now.getHours() >= 12 ? 'PM' : 'AM';
+                const formattedHours = now.getHours() % 12 || 12;
+                digitalTime.textContent = `${formattedHours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} ${amPm}`;
+                
+                // Update date
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                dateDisplay.textContent = now.toLocaleDateString('en-US', options);
+            }
+            
+            // Initial call
+            updateTime();
+            
+            // Update every 50ms for smoother animation
+            setInterval(updateTime, 50);
+        });
+    </script>
+</body>
+</html>
+
